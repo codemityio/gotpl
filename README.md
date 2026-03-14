@@ -4,8 +4,8 @@
 
 ## Summary
 
-A tool to support work with Go code.
+Go project template.
 
-## Licence
+## License
 
-Coming soon...
+This project is licensed under the <YOUR_LICENCE> License. See the [LICENSE](LICENSE) file for details.

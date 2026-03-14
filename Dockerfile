@@ -1,38 +1,39 @@
-ARG HOST="localhost"
 ARG VENDOR="vendor"
 ARG BASE_IMAGE_VERSION="latest"
 
-FROM ${HOST}/${VENDOR}/golang:${BASE_IMAGE_VERSION} AS builder
+FROM ${VENDOR}/golang:${BASE_IMAGE_VERSION} AS build
 
+ARG VENDOR="vendor"
 ARG NAME="app"
+ARG VERSION="latest"
+ARG BUILD_TIME=""
 
 WORKDIR /tmp/build
 
-RUN apk update \
-    && apk upgrade \
-    && apk add git
-
-COPY cmd cmd
-COPY internal internal
-COPY pkg pkg
-COPY go.* .
-COPY main.go main.go
+COPY "cmd" "cmd"
+COPY "internal" "internal"
+COPY "pkg" "pkg"
+COPY "go.*" "."
+COPY "*.go" "."
 
 RUN mkdir -p bin \
-    && go build -ldflags "-X \"main.name=${NAME}\"" -o bin/app main.go \
+    && go build \
+  -ldflags "\
+-X 'main.name=${NAME}' \
+-X 'main.version=${VERSION}' \
+-X 'main.copyright=${VENDOR}' \
+-X 'main.authorName=${VENDOR}' \
+-X 'main.buildTime=${BUILD_TIME}'\
+" -o bin/app . \
     && go clean -cache -modcache -testcache
 
-FROM ${HOST}/${VENDOR}/alpine:${BASE_IMAGE_VERSION} AS final
+FROM ${VENDOR}/alpine:${BASE_IMAGE_VERSION} AS final
 
 WORKDIR /opt/app/bin
 
-RUN apk update \
-    && apk upgrade \
-    && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
-
 ENV PATH="/opt/app/bin:${PATH}"
 
-COPY --from=builder /tmp/build/bin/app /opt/app/bin/app
+COPY --from=build /tmp/build/bin/app /opt/app/bin/app
 
 COPY entrypoint.sh /
 
