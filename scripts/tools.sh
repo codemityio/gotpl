@@ -13,8 +13,9 @@ touch .env.local
 case "$1" in
 
 "prep")
-  go install github.com/codemity/auxilium@latest
-  go install github.com/codemity/goforma@latest
+  go install github.com/"${VENDOR}"/auxilium@latest
+  go install github.com/"${VENDOR}"/goforma@latest
+  go install github.com/"${VENDOR}"/notatio@latest
   ;;
 
 "cmd")
