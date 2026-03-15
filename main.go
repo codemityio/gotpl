@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/codemity/gotpl/internal/app"
+	"github.com/codemityio/gotpl/internal/app"
 	"github.com/urfave/cli/v2"
 )
 

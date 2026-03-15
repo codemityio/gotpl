@@ -1,4 +1,4 @@
-module github.com/codemity/gotpl
+module github.com/codemityio/gotpl
 
 go 1.25.8
 
