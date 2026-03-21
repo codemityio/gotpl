@@ -4,9 +4,64 @@
 
 ## Table of contents
 
+- [Summary](#summary)
+- [Development](#development)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Manual](#manual)
+  - [Subcommands](#subcommands)
+- [Packages](#packages)
+- [License](#license)
+
 ## Summary
 
 Go project template.
+
+## Development
+
+To work with the codebase, use `make` command as the primary entry point for all project tools.
+
+Use the arrow keys `↓ ↑ → ←` to navigate the options, and press `/` to toggle search.
+
+## Installation
+
+To install the tool use `make install` (directly from the repository clone) or use
+`go install github.com/codemityio/gotpl@latest`.
+
+## Usage
+
+Once you have the tool installed, just use the `gotpl` command to get started.
+
+### Manual
+
+``` bash
+$ gotpl --help
+NAME:
+   gotpl - A new cli application
+
+USAGE:
+   gotpl [global options] command [command options]
+
+VERSION:
+   v0.0.2
+
+AUTHOR:
+   codemityio
+
+COMMANDS:
+   help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h     show help
+   --version, -v  print the version
+
+COPYRIGHT:
+   codemityio
+```
+
+### Subcommands
+
+## Packages
 
 ## License
 

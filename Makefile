@@ -7,6 +7,7 @@
 	@true
 
 default: # A default target to initiate interactive menu
+	@source scripts/func.sh && check "git docker go goimports gofumpt pandoc"
 	@scripts/default.sh make
 
 help: ## Prints help for targets with comments
@@ -105,14 +106,18 @@ push: ## Push image
 ## D O C S ##
 #############
 
-docs: ## Generate all docs
-	@PACKAGES='$(shell find "${PWD}/pkg"/*/ -maxdepth 0 -type d -exec basename {} \;)' make docs-uml docs-depgraph docs-pkg docs-render docs-main
+docs: docs-main ## Generate all docs
+	@PACKAGES='$(shell find "${PWD}/pkg" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; 2>/dev/null)' make docs-uml docs-depgraph docs-pkg docs-render
+	@PACKAGES='$(shell find "${PWD}/cmd" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; 2>/dev/null)' make docs-cmd
 
 docs-uml: ## Generate UML documentation
 	@scripts/docs.sh uml
 
 docs-depgraph: ## Generate dependency graph
 	@scripts/docs.sh depgraph
+
+docs-cmd: ## Generate cmd docs
+	@scripts/docs.sh cmd
 
 docs-pkg: ## Generate pkg docs
 	@scripts/docs.sh pkg
