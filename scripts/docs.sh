@@ -66,7 +66,7 @@ case "$1" in
   fi
   for target in ${targets//,/ }; do
     echo "cmd/${target}/..."
-    notatio coi --command="notatio ${target} --help" --document="cmd/${target}/README.md" --header=Manual --limiter-left=## --limiter-right=##
+    notatio coi --command="${BASE_NAME} ${target} --help" --document="cmd/${target}/README.md" --header=Manual --limiter-left=## --limiter-right="## Usage"
     notatio toc --document="cmd/${target}/README.md" --header="Table of contents" --limiter-left="##" --limiter-right="## Summary" \
       int --start-from-level=1 --start-from-item=1
     pandoc \
@@ -137,9 +137,9 @@ case "$1" in
   notatio toc --document=README.md --header="Packages" --limiter-left="##" --limiter-right="##" \
     ext --summary-header="Summary" --summary-limiter-left="##" --summary-limiter-right="##" ${paths}
   # command
-  notatio coi --command="gotpl --help" --document=README.md --header=Manual --limiter-left=### --limiter-right=###
+  notatio coi --command="${BASE_NAME} --help" --document=README.md --header=Manual --limiter-left=### --limiter-right=###
   # docker
-  notatio coi --command="docker run ${VENDOR}/notatio --help" \
+  notatio coi --command="docker run ${VENDOR}/${BASE_NAME} --help" \
     --document=README.md --header=Docker --limiter-left=### --limiter-right=##
   # table of contents
   notatio toc --document=README.md --header="Table of contents" --limiter-right="## Summary" \
