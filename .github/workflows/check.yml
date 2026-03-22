@@ -17,3 +17,11 @@ jobs:
 
       - name: Check
         run: make cmd COMMAND="make check"
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Docs
+        run: make prep docs diff
