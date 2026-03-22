@@ -18,7 +18,7 @@ jobs:
       - name: Add Go bin to PATH
         run: echo "${HOME}/go/bin" >> ${GITHUB_PATH}
 
-      - name: Check
+      - name: Code
         run: make cmd COMMAND="make check"
 
       - name: Docs
