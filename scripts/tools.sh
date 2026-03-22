@@ -186,7 +186,7 @@ EOF
 
 "install")
   go install -ldflags "\
-    -X 'main.name=${BASE_NAME}' \
+-X 'main.name=${BASE_NAME}' \
 -X 'main.version=latest' \
 -X 'main.copyright=${VENDOR}' \
 -X 'main.authorName=${VENDOR}' \
