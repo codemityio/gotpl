@@ -44,7 +44,7 @@ USAGE:
    gotpl [global options] command [command options]
 
 VERSION:
-   v0.0.2
+   latest
 
 AUTHOR:
    codemityio
@@ -65,29 +65,21 @@ COPYRIGHT:
 ### Docker
 
 ``` bash
-$ docker run codemityio/notatio --help
+$ docker run codemityio/gotpl --help
 NAME:
-   notatio - A new cli application
+   gotpl - A new cli application
 
 USAGE:
-   notatio [global options] command [command options]
+   gotpl [global options] command [command options]
 
 VERSION:
-   v0.0.0
-
-DESCRIPTION:
-   A tool designed to streamline working with documentation and diagrams.
+   v0.0.6
 
 AUTHOR:
    codemityio
 
 COMMANDS:
-   coi       
-   graphviz  
-   mermaid   
-   plantuml  
-   toc       
-   help, h   Shows a list of commands or help for one command
+   help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
    --help, -h     show help

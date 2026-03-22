@@ -13,6 +13,10 @@ touch .env.local
 case "$1" in
 
 "prep")
+  scripts/tools.sh install
+  go install github.com/"${VENDOR}"/auxilium@latest
+  go install github.com/"${VENDOR}"/notatio@latest
+  go install github.com/"${VENDOR}"/goforma@latest
   # Coming soon...
   ;;
 
