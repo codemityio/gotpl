@@ -13,12 +13,15 @@ touch .env.local
 case "$1" in
 
 "prep")
-  # Coming soon...
+  scripts/tools.sh install
+  go install github.com/"${VENDOR}"/auxilium@latest
+  go install github.com/"${VENDOR}"/notatio@latest
+  go install github.com/"${VENDOR}"/goforma@latest
   ;;
 
 "cmd")
   docker run --rm \
-    --user $(id -u):$(id -g) \
+    --user "$(id -u):$(id -g)" \
     --name "${BASE_NAME}-cmd" \
     -e DEBUG \
     -e GOCACHE="${PWD}/tmp" \
@@ -114,12 +117,12 @@ EOF
 
 "cov")
   go tool cover -func="tmp/coverage.out" -o tmp/coverage.in
-  #goforma badge \
-  #  --document=README.md \
-  #  --id=coverage-badge-do-not-edit \
-  #  coverage \
-  #  --cov-file-path=tmp/coverage.in \
-  #  --minimum="${MINIMUM_COVERAGE}"
+  goforma badge \
+    --document=README.md \
+    --id=coverage-badge-do-not-edit \
+    coverage \
+    --cov-file-path=tmp/coverage.in \
+    --minimum="${MINIMUM_COVERAGE}"
   ;;
 
 "cov-report")
@@ -178,7 +181,7 @@ EOF
     --build-arg VENDOR \
     --build-arg BASE_IMAGE_VERSION=latest \
     --build-arg NAME="${BASE_NAME}" \
-    --build-arg VERSION=$(scripts/tools.sh version) \
+    --build-arg VERSION="$(scripts/tools.sh version)" \
     --build-arg BUILD_TIME="$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
     -t "${IMAGE_NAME}:latest" \
     -f Dockerfile .
