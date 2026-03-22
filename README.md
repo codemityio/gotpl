@@ -65,28 +65,7 @@ COPYRIGHT:
 ### Docker
 
 ``` bash
-$ docker run codemityio/gotpl --help
-NAME:
-   gotpl - A new cli application
-
-USAGE:
-   gotpl [global options] command [command options]
-
-VERSION:
-   v0.0.6
-
-AUTHOR:
-   codemityio
-
-COMMANDS:
-   help, h  Shows a list of commands or help for one command
-
-GLOBAL OPTIONS:
-   --help, -h     show help
-   --version, -v  print the version
-
-COPYRIGHT:
-   codemityio
+$ docker run codemityio/gotpl
 ```
 
 ## Packages

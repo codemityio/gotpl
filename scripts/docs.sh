@@ -138,9 +138,6 @@ case "$1" in
     ext --summary-header="Summary" --summary-limiter-left="##" --summary-limiter-right="##" ${paths}
   # command
   notatio coi --command="${BASE_NAME} --help" --document=README.md --header=Manual --limiter-left=### --limiter-right=###
-  # docker
-  notatio coi --command="docker run ${VENDOR}/${BASE_NAME} --help" \
-    --document=README.md --header=Docker --limiter-left=### --limiter-right=##
   # table of contents
   notatio toc --document=README.md --header="Table of contents" --limiter-right="## Summary" \
     int --start-from-level=1 --start-from-item=1
