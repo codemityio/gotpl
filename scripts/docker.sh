@@ -33,11 +33,8 @@ case "$1" in
     --build-arg VERSION="$(scripts/tools.sh version)" \
     --build-arg BUILD_TIME="$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
     -t "${IMAGE_NAME}:latest" \
+    -t "${IMAGE_NAME}:$(scripts/tools.sh version)" \
     -f Dockerfile .
-  ;;
-
-"tag")
-  docker tag "${IMAGE_NAME}":latest "${IMAGE_NAME}:$(scripts/tools.sh version)"
   ;;
 
 "push")

@@ -21,11 +21,9 @@ case "$1" in
 
 "cmd")
   docker run --rm \
-    --user "$(id -u):$(id -g)" \
     --name "${BASE_NAME}-cmd" \
     -e DEBUG \
-    -e GOCACHE="${PWD}/tmp" \
-    -e XDG_CACHE_HOME="${PWD}/tmp" \
+    -e GOBIN="${PWD}/bin" \
     -v "${PWD}:${PWD}" \
     -w "${PWD}" \
     "${VENDOR}"/golang-dev:latest sh -c "${COMMAND}"

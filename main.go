@@ -24,6 +24,6 @@ func main() {
 	application.Commands = []*cli.Command{}
 
 	if e := application.Run(os.Args); e != nil {
-		log.Fatalf("error occurred during execution: %v", e)
+		log.Fatalf("error: %v", e)
 	}
 }
