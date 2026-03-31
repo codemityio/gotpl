@@ -1,6 +1,7 @@
 package app
 
 import (
+	"runtime/debug"
 	"time"
 
 	"github.com/urfave/cli/v2"
@@ -13,7 +14,7 @@ func WithValues(
 	return func(app *cli.App) {
 		app.Name = name
 		app.Description = description
-		app.Version = version
+		app.Version = resolveVersion(version)
 		app.Copyright = copyright
 
 		app.Authors = []*cli.Author{
@@ -25,15 +26,44 @@ func WithValues(
 
 		app.HideVersion = false
 
-		if buildTime == "" {
+		resolvedBuildTime := resolveBuildTime(buildTime)
+		if resolvedBuildTime == "" {
 			return
 		}
 
-		parsedBuildTime, err := time.Parse(time.RFC3339, buildTime)
+		parsedBuildTime, err := time.Parse(time.RFC3339, resolvedBuildTime)
 		if err != nil {
 			panic(err)
 		}
 
 		app.Compiled = parsedBuildTime
 	}
+}
+
+func resolveVersion(fallback string) string {
+	bi, ok := debug.ReadBuildInfo()
+	if !ok {
+		return fallback
+	}
+
+	if bi.Main.Version != "" && bi.Main.Version != "(devel)" {
+		return bi.Main.Version
+	}
+
+	return fallback
+}
+
+func resolveBuildTime(fallback string) string {
+	bi, ok := debug.ReadBuildInfo()
+	if !ok {
+		return fallback
+	}
+
+	for _, s := range bi.Settings {
+		if s.Key == "vcs.time" {
+			return s.Value
+		}
+	}
+
+	return fallback
 }
