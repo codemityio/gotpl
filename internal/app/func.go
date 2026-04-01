@@ -42,7 +42,7 @@ func WithValues(
 
 func resolveVersion(fallback string) string {
 	bi, ok := debug.ReadBuildInfo()
-	if !ok || fallback == "latest" {
+	if !ok {
 		return fallback
 	}
 
