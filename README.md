@@ -12,6 +12,9 @@
   - [Subcommands](#subcommands)
   - [Docker](#docker)
 - [Packages](#packages)
+- [Dependencies](#dependencies)
+  - [Graph](#graph)
+  - [Licenses](#licenses)
 - [License](#license)
 
 ## Summary
@@ -69,6 +72,21 @@ $ docker run codemityio/gotpl
 ```
 
 ## Packages
+
+## Dependencies
+
+### Graph
+
+![](docs/depgraph.svg)
+
+### Licenses
+
+| Package                                 | Licence                                                         | Type         |
+|-----------------------------------------|-----------------------------------------------------------------|--------------|
+| github.com/cpuguy83/go-md2man/v2/md2man | https://github.com/cpuguy83/go-md2man/blob/v2.0.7/LICENSE.md    | MIT          |
+| github.com/russross/blackfriday/v2      | https://github.com/russross/blackfriday/blob/v2.1.0/LICENSE.txt | BSD-2-Clause |
+| github.com/urfave/cli/v2                | https://github.com/urfave/cli/blob/v2.27.7/LICENSE              | MIT          |
+| github.com/xrash/smetrics               | https://github.com/xrash/smetrics/blob/686a1a2994c1/LICENSE     | MIT          |
 
 ## License
 
