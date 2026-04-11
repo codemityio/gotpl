@@ -185,7 +185,7 @@ case "$1" in
     --document-path=README.md \
     --csv-path=tmp/licenses.csv \
     --header="Licenses" \
-    --limiter-left="##" \
+    --limiter-left="###" \
     --limiter-right="## License" \
     --index=1
   # table of contents
