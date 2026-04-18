@@ -5,12 +5,12 @@
 ## Table of contents
 
 - [Summary](#summary)
-- [Development](#development)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Manual](#manual)
   - [Subcommands](#subcommands)
   - [Docker](#docker)
+- [Development](#development)
 - [Packages](#packages)
 - [Dependencies](#dependencies)
   - [Graph](#graph)
@@ -21,20 +21,14 @@
 
 Go project template.
 
-## Development
-
-To work with the codebase, use `make` command as the primary entry point for all project tools.
-
-Use the arrow keys `↓ ↑ → ←` to navigate the options, and press `/` to toggle search.
-
 ## Installation
 
-To install the tool use `make install` (directly from the repository clone) or use
+To install the package, run `make install` (directly from the repository clone) or use
 `go install github.com/codemityio/gotpl@latest`.
 
 ## Usage
 
-Once you have the tool installed, just use the `gotpl` command to get started.
+Once installed, use the `gotpl` command to get started.
 
 ### Manual
 
@@ -70,6 +64,12 @@ COPYRIGHT:
 ``` bash
 $ docker run codemityio/gotpl
 ```
+
+## Development
+
+To work with the codebase, use `make` command as the primary entry point for all project tools.
+
+Use the arrow keys `↓ ↑ → ←` to navigate the options, and press `/` to toggle search.
 
 ## Packages
 
