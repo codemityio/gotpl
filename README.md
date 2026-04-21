@@ -62,7 +62,7 @@ COPYRIGHT:
 ### Docker
 
 ``` bash
-$ docker run codemityio/gotpl
+docker run codemityio/gotpl
 ```
 
 ## Development

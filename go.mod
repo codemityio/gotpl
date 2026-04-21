@@ -1,6 +1,6 @@
 module github.com/codemityio/gotpl
 
-go 1.25.8
+go 1.26.2
 
 require (
 	github.com/stretchr/testify v1.11.1
