@@ -169,7 +169,7 @@ EOF
   go generate -skip=mockgen -v ./...
   go build -ldflags "\
 -X 'main.name=${BASE_NAME}' \
--X 'main.version=${VERSION}' \
+-X 'main.version=${VERSION:-unknown}' \
 -X 'main.copyright=${VENDOR}' \
 -X 'main.authorName=${VENDOR}' \
 -X 'main.buildTime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'\
@@ -179,7 +179,7 @@ EOF
 "install")
   go install -ldflags "\
 -X 'main.name=${BASE_NAME}' \
--X 'main.version=${VERSION}' \
+-X 'main.version=${VERSION:-unknown}' \
 -X 'main.copyright=${VENDOR}' \
 -X 'main.authorName=${VENDOR}' \
 -X 'main.buildTime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'\
