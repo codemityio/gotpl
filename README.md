@@ -1,6 +1,6 @@
 # ![GoTpl](logo.jpg)
 
-![coverage-badge-do-not-edit](https://img.shields.io/badge/Coverage-83%25-green.svg?longCache=true&style=flat)
+![coverage-badge-do-not-edit](https://img.shields.io/badge/Coverage-92%25-brightgreen.svg?longCache=true&style=flat)
 
 ## Table of contents
 

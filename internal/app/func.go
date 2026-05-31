@@ -48,14 +48,14 @@ func resolveVersion(fallback string, bi *debug.BuildInfo) string {
 	}
 
 	if bi == nil {
-		return "latest"
+		return latest
 	}
 
 	if bi.Main.Version != "" && bi.Main.Version != "(devel)" {
 		return bi.Main.Version
 	}
 
-	return "latest"
+	return latest
 }
 
 func resolveBuildTime(fallback string, bi *debug.BuildInfo) string {
@@ -64,7 +64,7 @@ func resolveBuildTime(fallback string, bi *debug.BuildInfo) string {
 	}
 
 	for _, s := range bi.Settings {
-		if s.Key == "vcs.time" {
+		if s.Key == vcsTime {
 			return s.Value
 		}
 	}
