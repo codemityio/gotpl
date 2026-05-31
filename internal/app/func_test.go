@@ -26,19 +26,19 @@ func TestResolveVersion(t *testing.T) {
 			name:     "nil build info returns latest",
 			fallback: "",
 			bi:       nil,
-			want:     "latest",
+			want:     latest,
 		},
 		{
 			name:     "devel returns latest",
 			fallback: "",
 			bi:       &debug.BuildInfo{Main: debug.Module{Version: "(devel)"}},
-			want:     "latest",
+			want:     latest,
 		},
 		{
 			name:     "empty version returns latest",
 			fallback: "",
 			bi:       &debug.BuildInfo{Main: debug.Module{Version: ""}},
-			want:     "latest",
+			want:     latest,
 		},
 		{
 			name:     "module version used when no fallback",
@@ -65,6 +65,11 @@ func TestResolveVersion(t *testing.T) {
 	}
 }
 
+const (
+	fallbackDateTime = "2026-04-01T18:00:00Z"
+	wantDateTime     = "2026-04-01T12:00:00Z"
+)
+
 func TestResolveBuildTime(t *testing.T) {
 	t.Parallel()
 
@@ -76,29 +81,29 @@ func TestResolveBuildTime(t *testing.T) {
 	}{
 		{
 			name:     "nil build info returns fallback",
-			fallback: "2026-04-01T18:00:00Z",
+			fallback: fallbackDateTime,
 			bi:       nil,
-			want:     "2026-04-01T18:00:00Z",
+			want:     fallbackDateTime,
 		},
 		{
 			name:     "vcs.time returned when present",
 			fallback: "",
 			bi: &debug.BuildInfo{
 				Settings: []debug.BuildSetting{
-					{Key: "vcs.time", Value: "2026-04-01T12:00:00Z"},
+					{Key: "vcs.time", Value: wantDateTime},
 				},
 			},
-			want: "2026-04-01T12:00:00Z",
+			want: wantDateTime,
 		},
 		{
 			name:     "fallback returned when vcs.time absent",
-			fallback: "2026-04-01T18:00:00Z",
+			fallback: fallbackDateTime,
 			bi: &debug.BuildInfo{
 				Settings: []debug.BuildSetting{
 					{Key: "vcs.revision", Value: "abc123"},
 				},
 			},
-			want: "2026-04-01T18:00:00Z",
+			want: fallbackDateTime,
 		},
 		{
 			name:     "empty fallback and no vcs.time returns empty",
@@ -108,13 +113,13 @@ func TestResolveBuildTime(t *testing.T) {
 		},
 		{
 			name:     "vcs.time takes precedence over fallback",
-			fallback: "2026-04-01T18:00:00Z",
+			fallback: fallbackDateTime,
 			bi: &debug.BuildInfo{
 				Settings: []debug.BuildSetting{
-					{Key: "vcs.time", Value: "2026-04-01T12:00:00Z"},
+					{Key: "vcs.time", Value: wantDateTime},
 				},
 			},
-			want: "2026-04-01T12:00:00Z",
+			want: wantDateTime,
 		},
 	}
 
